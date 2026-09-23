@@ -8,294 +8,76 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
-    <!-- Google Fonts (Prompt & Kanit) -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
     <!-- SweetAlert2 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.min.css" rel="stylesheet">
-    
-    <style>
-        :root {
-            --primary-color: #2b2d42;
-            --accent-color: #4a90e2;
-            --bg-light: #f8f9fa;
-            --text-dark: #333333;
-            --sidebar-width: 280px;
-        }
-
-        body {
-            font-family: 'Prompt', sans-serif;
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Layout Structure */
-        .app-wrapper {
-            display: flex;
-            flex: 1;
-        }
-
-        /* Sidebar Styling */
-        .sidebar {
-            width: var(--sidebar-width);
-            background-color: #ffffff;
-            border-right: 1px solid #e9ecef;
-            padding: 2rem 1.5rem;
-            display: flex;
-            flex-direction: column;
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            z-index: 100;
-        }
-
-        .brand-box {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 2.5rem;
-            text-decoration: none;
-            color: var(--primary-color);
-        }
-
-        .brand-logo {
-            font-size: 2rem;
-            color: var(--accent-color);
-        }
-
-        .brand-title {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .site-name {
-            font-weight: 600;
-            font-size: 1.1rem;
-            line-height: 1.2;
-        }
-
-        .site-sub {
-            font-size: 0.75rem;
-            color: #6c757d;
-        }
-
-        /* Navigation Links */
-        .nav-pills .nav-link {
-            color: #495057;
-            font-weight: 400;
-            padding: 0.75rem 1rem;
-            border-radius: 8px;
-            margin-bottom: 0.5rem;
-            text-align: left;
-            transition: background-color 0.2s ease, color 0.2s ease;
-        }
-
-        .nav-pills .nav-link:hover {
-            background-color: #eef5ff;
-            color: var(--accent-color);
-        }
-
-        .nav-pills .nav-link.active {
-            background-color: var(--accent-color);
-            color: #ffffff;
-        }
-
-        .nav-pills .nav-link i {
-            margin-right: 10px;
-            width: 20px;
-        }
-
-        /* Main Content Area */
-        .main-content {
-            margin-left: var(--sidebar-width);
-            flex: 1;
-            padding: 2.5rem;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        .content-area {
-            flex: 1;
-            background: #ffffff;
-            border-radius: 12px;
-            padding: 2.5rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-            border: 1px solid #e9ecef;
-        }
-
-        /* Minimal Transitions */
-        .tab-pane {
-            animation: fadeIn 0.3s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* Home Page Styling */
-        .hero-card {
-            text-align: center;
-            padding: 2rem 1rem;
-        }
-
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 1.5rem;
-            border: 3px solid var(--accent-color);
-        }
-
-        .hero-title {
-            font-size: 2rem;
-            font-weight: 600;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .hero-subtitle {
-            font-size: 1.1rem;
-            color: var(--accent-color);
-            margin-bottom: 1rem;
-        }
-
-        /* About Page Styling */
-        .section-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #f0f0f0;
-        }
-
-        .info-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .info-list li {
-            padding: 0.6rem 0;
-            border-bottom: 1px dashed #e9ecef;
-        }
-
-        .info-list strong {
-            color: var(--primary-color);
-            width: 150px;
-            display: inline-block;
-        }
-
-        .progress {
-            height: 8px;
-            border-radius: 4px;
-            background-color: #e9ecef;
-        }
-
-        .progress-bar {
-            background-color: var(--accent-color);
-        }
-
-        /* Contact Page Styling */
-        .contact-info-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 1.2rem;
-        }
-
-        .contact-info-item .icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: #eef5ff;
-            color: var(--accent-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Footer */
-        .footer {
-            margin-top: 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid #e9ecef;
-            text-align: center;
-            font-size: 0.875rem;
-            color: #6c757d;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .sidebar {
-                width: 100%;
-                height: auto;
-                position: relative;
-                border-right: none;
-                border-bottom: 1px solid #e9ecef;
-            }
-
-            .main-content {
-                margin-left: 0;
-                padding: 1rem;
-            }
-
-            .content-area {
-                padding: 1.5rem;
-            }
-        }
-    </style>
+    <!-- External CSS (ข้อ 4) -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="app-wrapper">
-        <!-- 1. Sidebar Navigation (ส่วนแถบด้านข้าง) -->
-        <aside class="sidebar">
-            <a href="#page-home" class="brand-box" onclick="switchToTab('tab-home')">
-                <i class="fas fa-code brand-logo"></i>
-                <div class="brand-title">
-                    <span class="site-name">THANTHAT.B</span>
-                    <span class="site-sub">Personal Website</span>
-                </div>
-            </a>
+    <!-- 5.2 Header Top Bar (Logo อยู่ซ้ายบน - ชื่อเว็บอยู่ขวาบน) -->
+    <header class="top-header">
+        <div class="header-logo">
+            <i class="fas fa-code"></i>
+            <span>PORTFOLIO</span>
+        </div>
+        <div class="header-site-name">
+            THANTHAT BUTNOK
+        </div>
+    </header>
 
-            <!-- 1.1 - 1.3 Menu List -->
+    <div class="app-wrapper">
+        <!-- 5.3 เมนูทางด้านซ้าย (ข้อ 1: มีทั้งหมด 5 เมนู) -->
+        <aside class="sidebar">
             <ul class="nav flex-column nav-pills w-100" id="v-pills-tab" role="tablist">
+                <!-- 1.1 Home -->
                 <li class="nav-item">
                     <a class="nav-link active" id="tab-home" data-bs-toggle="pill" href="#page-home" role="tab">
                         <i class="fas fa-home"></i> หน้าหลัก (Home)
                     </a>
                 </li>
+                <!-- 1.2 ประวัติ -->
                 <li class="nav-item">
                     <a class="nav-link" id="tab-about" data-bs-toggle="pill" href="#page-about" role="tab">
-                        <i class="fas fa-user"></i> ประวัติส่วนตัว (About)
+                        <i class="fas fa-user"></i> ประวัติส่วนตัว
                     </a>
                 </li>
+                <!-- เมนูที่ 3 (เพิ่มเติมเพื่อให้ครบ 5) -->
+                <li class="nav-item">
+                    <a class="nav-link" id="tab-skills" data-bs-toggle="pill" href="#page-skills" role="tab">
+                        <i class="fas fa-laptop-code"></i> ทักษะและความสามารถ
+                    </a>
+                </li>
+                <!-- เมนูที่ 4 (เพิ่มเติมเพื่อให้ครบ 5) -->
+                <li class="nav-item">
+                    <a class="nav-link" id="tab-portfolio" data-bs-toggle="pill" href="#page-portfolio" role="tab">
+                        <i class="fas fa-folder-open"></i> ผลงาน
+                    </a>
+                </li>
+                <!-- 1.3 ติดต่อ -->
                 <li class="nav-item">
                     <a class="nav-link" id="tab-contact" data-bs-toggle="pill" href="#page-contact" role="tab">
-                        <i class="fas fa-envelope"></i> ติดต่อ (Contact)
+                        <i class="fas fa-envelope"></i> ติดต่อ
                     </a>
                 </li>
             </ul>
         </aside>
 
-        <!-- 2. Main Content Area (ส่วนเนื้อหาหลัก) -->
+        <!-- 2. ส่วนเนื้อหาเว็บเพจ -->
         <main class="main-content">
             <div class="content-area tab-content" id="v-pills-tabContent">
                 
-                <!-- PAGE 1: HOME -->
+                <!-- PAGE 1: HOME (หน้าหลัก) -->
                 <div class="tab-pane fade show active" id="page-home" role="tabpanel">
                     <div class="hero-card">
-                        <img src="gallery/pp4.jpg" alt="Profile" class="profile-img">
+                        <!-- เปลี่ยนชื่อไฟล์รูปตรง src="profile.jpg" ได้ที่นี่ -->
+                        <img src="profile.jpg" alt="Profile" class="profile-img" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80'">
                         <h1 class="hero-title">สวัสดีครับ, ผม <span class="text-primary">นายฐานฑัต บุตรนอก</span></h1>
                         <p class="hero-subtitle">ชื่อเล่น: ปั๊ปปี้ | นักพัฒนาเว็บไซต์ & ฐานข้อมูล</p>
                         <p class="text-muted max-w-600 mx-auto">
-                            ยินดีต้อนรับสู่เว็บไซต์ส่วนตัวของผม สนใจในการเขียนเว็บ พัฒนาเว็บไซต์ และจัดการระบบฐานข้อมูล (Database)
+                            ยินดีต้อนรับสู่เว็บไซต์ส่วนตัวของผม มีความสนใจในการเขียนเว็บ พัฒนาเว็บไซต์ และจัดการระบบฐานข้อมูล (Database)
                         </p>
                         <div class="mt-4">
                             <button class="btn btn-primary me-2 px-4" onclick="switchToTab('tab-about')">ดูประวัติส่วนตัว</button>
@@ -304,17 +86,15 @@
                     </div>
                 </div>
 
-                <!-- PAGE 2: ABOUT -->
+                <!-- PAGE 2: ABOUT (ประวัติ) -->
                 <div class="tab-pane fade" id="page-about" role="tabpanel">
                     <h2 class="section-title"><i class="fas fa-user-id-card me-2"></i>ประวัติส่วนตัว (About Me)</h2>
-                    
                     <div class="row">
-                        <div class="col-md-6 mb-4">
-                            <h4 class="h6 text-uppercase text-muted mb-3">ข้อมูลทั่วไป</h4>
+                        <div class="col-md-7">
                             <ul class="info-list">
                                 <li><strong>ชื่อ-นามสกุล:</strong> นายฐานฑัต บุตรนอก</li>
                                 <li><strong>ชื่อเล่น:</strong> ปั๊ปปี้</li>
-                                <li><strong>ระดับการศึกษา:</strong> ปริญญาตรี</li>
+                                <li><strong>ระดับการศึกษา:</strong> ปริญญาตรี (4 ปี)</li>
                                 <li><strong>สถาบัน:</strong> มหาวิทยาลัยราชภัฏเลย</li>
                                 <li><strong>สาขาวิชา:</strong> คอมพิวเตอร์ศึกษา</li>
                                 <li><strong>วิชาเอก:</strong> การออกแบบและพัฒนาเว็บไซต์เบื้องต้น, ฐานข้อมูล (Database)</li>
@@ -322,72 +102,81 @@
                                 <li><strong>งานอดิเรก:</strong> ฝึกเขียนโค้ดเกี่ยวกับ MySQL เป็นประจำ</li>
                             </ul>
                         </div>
-
-                        <div class="col-md-6 mb-4">
-                            <h4 class="h6 text-uppercase text-muted mb-3">ทักษะและความสามารถ</h4>
-                            
-                            <div class="mb-3">
-                                <div class="d-flex justify-content-between mb-1">
-                                    <span>HTML / CSS / JavaScript</span>
-                                    <span>95%</span>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar" style="width: 95%;"></div>
-                                </div>
-                            </div>
-
-                            <div class="mb-3">
-                                <div class="d-flex justify-content-between mb-1">
-                                    <span>Bootstrap Framework</span>
-                                    <span>95%</span>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar" style="width: 95%;"></div>
-                                </div>
-                            </div>
-
-                            <div class="mb-3">
-                                <div class="d-flex justify-content-between mb-1">
-                                    <span>MySQL / Database Management</span>
-                                    <span>95%</span>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar" style="width: 95%;"></div>
-                                </div>
-                            </div>
-
-                            <h4 class="h6 text-uppercase text-muted mt-4 mb-3">ประวัติการศึกษา</h4>
-                            <div class="border-start border-2 border-primary ps-3 py-1">
-                                <h6 class="mb-0">ปริญญาตรี (4 ปี)</h6>
-                                <small class="text-muted">ปีการศึกษา 2568 - 2570</small>
-                                <p class="mb-0 small text-secondary">สาขาคอมพิวเตอร์ศึกษา มหาวิทยาลัยราชภัฏเลย</p>
+                        <div class="col-md-5">
+                            <h4 class="h6 text-uppercase text-muted mb-3">ประวัติการศึกษา</h4>
+                            <div class="border-start border-2 border-primary ps-3 py-2">
+                                <h6 class="mb-1">ปริญญาตรี สาขาคอมพิวเตอร์ศึกษา</h6>
+                                <small class="text-muted d-block mb-1">ปีการศึกษา 2568 - 2570</small>
+                                <p class="mb-0 small text-secondary">มหาวิทยาลัยราชภัฏเลย</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- PAGE 3: CONTACT -->
+                <!-- PAGE/TAB 3: SKILLS (ทักษะ) -->
+                <div class="tab-pane fade" id="page-skills" role="tabpanel">
+                    <h2 class="section-title"><i class="fas fa-laptop-code me-2"></i>ทักษะและความสามารถ (Skills)</h2>
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span>HTML / CSS / JavaScript</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="progress"><div class="progress-bar" style="width: 95%;"></div></div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span>Bootstrap Framework</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="progress"><div class="progress-bar" style="width: 95%;"></div></div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span>MySQL / Database Management</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="progress"><div class="progress-bar" style="width: 95%;"></div></div>
+                    </div>
+                </div>
+
+                <!-- PAGE/TAB 4: PORTFOLIO (ผลงาน) -->
+                <div class="tab-pane fade" id="page-portfolio" role="tabpanel">
+                    <h2 class="section-title"><i class="fas fa-folder-open me-2"></i>ผลงานและโปรเจกต์ (Portfolio)</h2>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="p-3 border rounded bg-light">
+                                <h5><i class="fas fa-globe text-primary me-2"></i>Web Development</h5>
+                                <p class="small text-muted mb-0">ออกแบบและพัฒนาเว็บไซต์แสดงข้อมูลส่วนตัวด้วย HTML, CSS, JavaScript และ Bootstrap</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="p-3 border rounded bg-light">
+                                <h5><i class="fas fa-database text-primary me-2"></i>Database Design</h5>
+                                <p class="small text-muted mb-0">ออกแบบและจัดการระบบฐานข้อมูลเชิงสัมพันธ์ด้วย MySQL / MariaDB</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PAGE 5: CONTACT (ติดต่อ) -->
                 <div class="tab-pane fade" id="page-contact" role="tabpanel">
                     <h2 class="section-title"><i class="fas fa-envelope me-2"></i>ช่องทางติดต่อ (Contact)</h2>
-                    
                     <div class="row">
                         <div class="col-md-5 mb-4">
                             <div class="contact-info-item">
                                 <div class="icon"><i class="fas fa-envelope"></i></div>
                                 <div>
                                     <div class="fw-bold">อีเมล</div>
-                                    <a href="mailto:thanthatpbutnok@gmail.com" class="text-decoration-none text-muted">thanthatpbutnok@gmail.com</a>
+                                    <a href="mailto:thanthatpbutnok@gmail.com" class="text-muted">thanthatpbutnok@gmail.com</a>
                                 </div>
                             </div>
-
                             <div class="contact-info-item">
                                 <div class="icon"><i class="fas fa-phone-alt"></i></div>
                                 <div>
                                     <div class="fw-bold">เบอร์โทรศัพท์</div>
-                                    <a href="tel:0966879512" class="text-decoration-none text-muted">096-687-9512</a>
+                                    <a href="tel:0966879512" class="text-muted">096-687-9512</a>
                                 </div>
                             </div>
-
                             <div class="contact-info-item">
                                 <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
                                 <div>
@@ -395,16 +184,14 @@
                                     <div class="text-muted">08/419 ตำบล เมือง อำเภอ เมือง จังหวัด เลย</div>
                                 </div>
                             </div>
-
                             <div class="contact-info-item">
                                 <div class="icon"><i class="fab fa-facebook-f"></i></div>
                                 <div>
                                     <div class="fw-bold">Facebook</div>
-                                    <a href="https://web.facebook.com/thantat.butnok/?locale=th_TH" target="_blank" class="text-decoration-none text-primary">Thanthat Butnok</a>
+                                    <a href="https://web.facebook.com/thantat.butnok/?locale=th_TH" target="_blank" class="text-primary">Thanthat Butnok</a>
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-md-7">
                             <form id="contactForm" onsubmit="handleFormSubmit(event)">
                                 <div class="mb-3">
@@ -438,35 +225,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <!-- SweetAlert2 JS -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.all.min.js"></script>
-
-    <!-- External JavaScript Logic -->
-    <script>
-        // ฟังก์ชันสำหรับสลับแท็บเมนูผ่าน JavaScript
-        function switchToTab(tabId) {
-            const tabElement = document.getElementById(tabId);
-            if (tabElement) {
-                const triggerTab = new bootstrap.Tab(tabElement);
-                triggerTab.show();
-            }
-        }
-
-        // ฟังก์ชันจัดการการส่งฟอร์มติดต่อด้วย SweetAlert2
-        function handleFormSubmit(event) {
-            event.preventDefault(); // ป้องกันการ reload หน้าเพจ
-            
-            // แสดงข้อความต้อนรับ/ตอบรับเมื่อกดส่งข้อมูล
-            Swal.fire({
-                title: 'ส่งข้อความเรียบร้อย!',
-                text: 'ขอบคุณสำหรับการติดต่อ ข้อมูลถูกส่งถึงคุณฐานฑัตเรียบร้อยแล้ว',
-                icon: 'success',
-                confirmButtonText: 'ตกลง',
-                confirmButtonColor: '#4a90e2'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    document.getElementById('contactForm').reset();
-                }
-            });
-        }
-    </script>
+    <!-- External JavaScript (ข้อ 4) -->
+    <script src="script.js"></script>
 </body>
 </html>
